@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-between mb-3">
-        <div class="col">
-            <h2>Books</h2>
+    <div class="container mt-5">
+        <div class="row justify-content-between mb-3">
+            <div class="col">
+                <h2>Books</h2>
+            </div>
+            <div class="col-auto">
+                <a href="{{ route('books.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Book</a>
+            </div>
         </div>
-        <div class="col-auto">
-            <a href="{{ route('books.create') }}" class="btn btn-primary">Add Book</a>
-        </div>
-    </div>
-    <table class="table">
-        <thead>
+        <table class="table table-hover">
+            <thead>
             <tr>
                 <th>#</th>
                 <th>Title</th>
@@ -19,10 +19,11 @@
                 <th>Publisher</th>
                 <th>Published Year</th>
                 <th>Category</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach ($books as $book)
                 <tr>
                     <td>{{ $book->id }}</td>
@@ -32,18 +33,23 @@
                     <td>{{ $book->published_year }}</td>
                     <td>{{ $book->category }}</td>
                     <td>
-                        <a href="{{ route('books.show', $book->id) }}" class="btn btn-info btn-sm">View</a>
-                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <span class="badge badge-{{ $book->isAvailable() ? 'success' : 'danger' }}">
+                            {{ $book->isAvailable() ? 'Available' : 'Unavailable' }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{{ route('books.show', $book->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+        {{ $books->links('pagination::bootstrap-4') }}
+    </div>
 @endsection
-

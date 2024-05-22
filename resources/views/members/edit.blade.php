@@ -28,7 +28,7 @@
 
                             <div class="form-group">
                                 <label for="contact_info">Contact Information</label>
-                                <input id="contact_info" type="text" class="form-control" name="contact_info" value="{{ $member->contact_info }}" required>
+                                <input id="contact_info" type="text" class="form-control" name="contact_information" value="{{ $member->contact_information }}" required>
                             </div>
 
                             <div class="form-group mb-0">

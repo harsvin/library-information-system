@@ -27,7 +27,7 @@ class BorrowingRecordController extends Controller
             }
         }
 
-        $records = $query->with(['book', 'member'])->get();
+        $records = $query->with(['book', 'member'])->paginate(4);
         \Log::info('Records found: ' . $records->count());
 
         return view('borrowing_records.index', compact('records'));

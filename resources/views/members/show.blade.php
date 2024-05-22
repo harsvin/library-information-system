@@ -10,7 +10,7 @@
                         <p><strong>Name:</strong> {{ $member->name }}</p>
                         <p><strong>IC No.:</strong> {{ $member->ic_no }}</p>
                         <p><strong>Address:</strong> {{ $member->address }}</p>
-                        <p><strong>Contact Information:</strong> {{ $member->contact_info }}</p>
+                        <p><strong>Contact Information:</strong> {{ $member->contact_information }}</p>
                     </div>
                 </div>
             </div>

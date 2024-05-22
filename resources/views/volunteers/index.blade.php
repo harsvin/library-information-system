@@ -51,6 +51,7 @@
                             @endforelse
                             </tbody>
                         </table>
+                            {{ $volunteers->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

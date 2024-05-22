@@ -66,7 +66,6 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
-        // Other middleware
         'is_supervisor' => \App\Http\Middleware\IsSupervisor::class,
     ];
 }

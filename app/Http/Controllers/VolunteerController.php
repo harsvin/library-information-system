@@ -9,7 +9,7 @@ class VolunteerController extends Controller
 {
     public function index()
     {
-        $volunteers = User::where('is_supervisor', false)->get();
+        $volunteers = User::where('is_supervisor', false)->paginate(4);
         return view('volunteers.index', compact('volunteers'));
     }
 

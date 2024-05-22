@@ -19,16 +19,22 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if (!$user->is_active) {
+                Auth::logout();
+                return redirect()->route('login')->withErrors(['Your account is inactive. Please contact the supervisor.']);
+            }
+
             return redirect()->intended('dashboard');
         }
 
-        return redirect('login')->withErrors('Login details are not valid');
+        return redirect()->route('login')->withErrors('Login details are not valid');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('login');
+        return redirect()->route('login');
     }
 
     public function showRegisterForm()

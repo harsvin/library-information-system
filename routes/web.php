@@ -18,6 +18,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [AuthController::class, 'register']);
 
+
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard');
@@ -25,6 +26,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('books', BookController::class);
     Route::resource('members', MemberController::class);
+    Route::get('members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
     Route::resource('borrowing_records', BorrowingRecordController::class);
 });
 

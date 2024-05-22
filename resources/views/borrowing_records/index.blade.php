@@ -60,6 +60,7 @@
                             @endforelse
                             </tbody>
                         </table>
+                            {{ $records->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

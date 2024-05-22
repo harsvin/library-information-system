@@ -53,6 +53,7 @@
                             @endforelse
                             </tbody>
                         </table>
+                            {{ $members->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

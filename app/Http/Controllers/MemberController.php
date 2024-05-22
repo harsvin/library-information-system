@@ -9,7 +9,7 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $members = Member::all();
+        $members = Member::paginate(4); // Fetch 10 members per page
         return view('members.index', compact('members'));
     }
 
@@ -40,7 +40,7 @@ class MemberController extends Controller
 
     public function edit(Member $member)
     {
-        $member = Member::findOrFail($member);
+
         return view('members.edit', compact('member'));
     }
 
@@ -52,7 +52,7 @@ class MemberController extends Controller
             'address' => 'required',
             'contact_information' => 'required',
         ]);
-        $member = Member::findOrFail($member);
+
         $member->update($request->all());
         return redirect()->route('members.index')
                          ->with('success', 'Member updated successfully.');
@@ -61,7 +61,7 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
 
-        $member = Member::findOrFail($member);
+
         $member->delete();
         return redirect()->route('members.index')
                          ->with('success', 'Member deleted successfully.');
