@@ -36,11 +36,11 @@
                                     <td>{{ $volunteer->email }}</td>
                                     <td>{{ $volunteer->is_active ? 'Active' : 'Inactive' }}</td>
                                     <td>
-                                        <a href="{{ route('volunteers.edit', $volunteer->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('volunteers.edit', $volunteer->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                         <form action="{{ route('volunteers.destroy', $volunteer->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

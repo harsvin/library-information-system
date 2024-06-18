@@ -38,11 +38,11 @@
                                     <td>{{ $member->address }}</td>
                                     <td>{{ $member->contact_information }}</td>
                                     <td>
-                                        <a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                         <form action="{{ route('members.destroy', $member->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

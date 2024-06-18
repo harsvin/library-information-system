@@ -2,54 +2,37 @@
 
 @section('content')
     <div class="container mt-5">
-        <div class="row justify-content-between mb-3">
-            <div class="col">
-                <h2>Books</h2>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Add New Book</div>
+                <div class="card-body">
+        <form action="{{ route('books.store') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
             </div>
-            <div class="col-auto">
-                <a href="{{ route('books.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Book</a>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="publisher">Publisher</label>
+                <input type="text" class="form-control" id="publisher" name="publisher" required>
+            </div>
+            <div class="form-group">
+                <label for="published_year">Published Year</label>
+                <input type="number" class="form-control" id="published_year" name="published_year" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+        </form>
+               </div>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Publisher</th>
-                <th>Published Year</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach ($books as $book)
-                <tr>
-                    <td>{{ $book->id }}</td>
-                    <td>{{ $book->title }}</td>
-                    <td>{{ $book->author }}</td>
-                    <td>{{ $book->publisher }}</td>
-                    <td>{{ $book->published_year }}</td>
-                    <td>{{ $book->category }}</td>
-                    <td>
-                        <span class="badge badge-{{ $book->isAvailable() ? 'success' : 'danger' }}">
-                            {{ $book->isAvailable() ? 'Available' : 'Unavailable' }}
-                        </span>
-                    </td>
-                    <td>
-                        <a href="{{ route('books.show', $book->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        {{ $books->links('pagination::bootstrap-4') }}
     </div>
+
 @endsection

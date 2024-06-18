@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::paginate(4); // Fetch 10 books per page
+        $books = Book::paginate(4); // Fetch 4 books per page
         return view('books.index', compact('books'));
     }
 

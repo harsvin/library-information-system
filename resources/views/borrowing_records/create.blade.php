@@ -1,11 +1,9 @@
-<!-- resources/views/borrowing_records/create.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row justify-content-lg-center">
+            <div class="col-auto">
                 <div class="card">
                     <div class="card-header">Add Borrowing Record</div>
                     <div class="card-body">
@@ -14,6 +12,7 @@
                             <div class="form-group">
                                 <label for="book_id">Book</label>
                                 <select class="form-control" id="book_id" name="book_id" required>
+                                    <option value="">Select a book</option>
                                     @foreach($books as $book)
                                         <option value="{{ $book->id }}">{{ $book->title }}</option>
                                     @endforeach
@@ -22,6 +21,7 @@
                             <div class="form-group">
                                 <label for="member_id">Member</label>
                                 <select class="form-control" id="member_id" name="member_id" required>
+                                    <option value="">Select a member</option>
                                     @foreach($members as $member)
                                         <option value="{{ $member->id }}">{{ $member->name }}</option>
                                     @endforeach

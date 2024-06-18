@@ -35,7 +35,10 @@ class BorrowingRecordController extends Controller
 
     public function create()
     {
-        $books = Book::all();
+        // Fetch only available books
+        $books = Book::all()->filter(function ($book) {
+            return $book->isAvailable();
+        });
         $members = Member::all();
         return view('borrowing_records.create', compact('books', 'members'));
     }
@@ -47,6 +50,12 @@ class BorrowingRecordController extends Controller
             'member_id' => 'required|exists:members,id',
             'borrow_date' => 'required|date',
         ]);
+
+        $book = Book::findOrFail($request->book_id);
+
+        if (!$book->isAvailable()) {
+            return redirect()->back()->withErrors(['book_id' => 'The selected book is currently unavailable.']);
+        }
 
         BorrowingRecord::create($request->all());
 

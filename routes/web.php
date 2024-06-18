@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+
     Route::resource('books', BookController::class);
     Route::resource('members', MemberController::class);
     Route::get('members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');

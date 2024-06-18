@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="container mt-5">
-        <div class="row justify-content-between mb-3">
-            <div class="col">
-                <h2>Books</h2>
-            </div>
+        <div class="row justify-content-center"> </div>
+                <div class="card">
+                    <div class="card-header">
+                        Books
             <div class="col-auto">
-                <a href="{{ route('books.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Book</a>
+                <a href="{{ route('books.create') }}" class="btn btn-primary float-right"> Add Book</a>
             </div>
         </div>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Publisher</th>
@@ -39,7 +39,7 @@
                     </td>
                     <td>
                         <a href="{{ route('books.show', $book->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')

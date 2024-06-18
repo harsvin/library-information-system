@@ -1,0 +1,55 @@
+/* Hover effect for cards */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Button hover effects */
+.btn-primary, .btn-warning, .btn-danger {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #388e3c;
+}
+
+.btn-warning:hover {
+    background-color: #ff9800;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #5f9ea0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #4caf50;
+}
+
+/* Main content styling */
+main {
+    margin-left: 260px;
+    padding: 20px;
+}
