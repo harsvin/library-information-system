@@ -17,13 +17,14 @@ class BorrowingRecordController extends Controller
             $search = $request->input('search');
             $searchBy = $request->input('search_by');
             \Log::info('Search by: ' . $searchBy . ', Search term: ' . $search);
+            // Log the search parameters. used to track the search parameters entered by the user.
 
             if ($searchBy == 'ic') {
                 $query->whereHas('member', function ($q) use ($search) {
                     $q->where('ic_no', 'like', "%{$search}%");
-                });
+                }); // Filter by member's IC number if searchBy is 'ic'
             } elseif ($searchBy == 'book') {
-                $query->where('book_id', $search); // Exact match for book_id
+                $query->where('book_id', $search); // Filter by book ID if searchBy is 'book'
             }
         }
 

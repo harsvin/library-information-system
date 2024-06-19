@@ -11,12 +11,12 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth.login'); // Display the login form view
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password'); // Extract email and password from the request
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
@@ -25,7 +25,7 @@ class AuthController extends Controller
                 return redirect()->route('login')->withErrors(['Your account is inactive. Please contact the supervisor.']);
             }
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard'); // Redirect to the intended page (dashboard) after successful login
         }
 
         return redirect()->route('login')->withErrors('Login details are not valid');
@@ -56,7 +56,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
+        Auth::login($user); // Log in the newly registered user
         return redirect('dashboard');
     }
 }

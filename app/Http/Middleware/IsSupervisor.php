@@ -16,8 +16,9 @@ class IsSupervisor
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // This line checks if the user is authenticated and is a supervisor.
         if (Auth::check() && Auth::user()->is_supervisor) {
-        return $next($request);
+        return $next($request); // If the user is authenticated and is a supervisor, it allows the request to proceed to the next middleware or route handler.
     }
 
         return redirect('/home')->with('error', 'You do not have supervisor access.');

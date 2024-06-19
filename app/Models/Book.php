@@ -18,6 +18,11 @@ class Book extends Model
         return $this->hasMany(BorrowingRecord::class);
     }
 
+    public function member()
+    {
+        return $this->hasMany(Member::class);
+    }
+
     public function isAvailable()
     {
         return !$this->borrowingRecords()->whereNull('return_date')->exists();

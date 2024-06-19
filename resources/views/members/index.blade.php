@@ -32,7 +32,7 @@
                             <tbody>
                             @forelse($members as $member)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $member->id }}</td>
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->ic_no }}</td>
                                     <td>{{ $member->address }}</td>
